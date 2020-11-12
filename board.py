@@ -6,7 +6,7 @@ class Board:
         """Initialize sudoku board"""
         self.rows = settings.rows
         self.cols = settings.cols
-        self.width = settings.window_width
+        self.width = settings.width
         self.height = settings.window_height
         self.board = [
             [7, 8, 0, 4, 0, 0, 1, 2, 0],
@@ -26,3 +26,19 @@ class Board:
     def update_model(self):
         """Update model"""
         self.model = [[self.cubes[i][j].value for j in range(self.cols)] for i in range(self.rows)]
+
+    def draw_grid(self, window, settings):
+        """Draw grid lines"""
+        size = self.width / self.rows
+
+        for i in range(self.rows + 1):
+            if i % 3 == 0 and i != 0:
+                thick = 4
+            else:
+                thick = 1
+            pygame.draw.line(window, settings.black, (0, i * size), (self.width, i * size), thick)
+            pygame.draw.line(window, settings.black, (i * size, 0), (i * size, self.height), thick)
+
+        for i in range(self.rows):
+            for j in range(self.cols):
+                self.cubes[i][j].draw_cube(window)
