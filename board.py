@@ -1,3 +1,4 @@
+import pygame
 from cube import Cube
 from solver import is_valid, solve
 
@@ -7,8 +8,8 @@ class Board:
         """Initialize sudoku board"""
         self.rows = settings.rows
         self.cols = settings.cols
-        self.width = settings.width
-        self.height = settings.window_height
+        self.width = settings.window_width
+        self.height = settings.window_width
         self.board = [
             [7, 8, 0, 4, 0, 0, 1, 2, 0],
             [6, 0, 0, 0, 7, 5, 0, 0, 9],

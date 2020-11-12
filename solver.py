@@ -22,6 +22,8 @@ def is_valid(board, number, position):
             if board[i][j] == number and (i, j) != position:
                 return False
 
+    return True
+
 def solve(board):
     """Solve the board"""
     empty = find_empty(board)
