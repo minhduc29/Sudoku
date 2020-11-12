@@ -6,3 +6,5 @@ class Settings:
         self.window_height = 690
         self.rows = 9
         self.cols = 9
+        self.white = (255, 255, 255)
+

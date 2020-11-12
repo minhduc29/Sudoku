@@ -3,6 +3,7 @@ from cube import Cube
 class Board:
     """Class to manage the main board of the game"""
     def __init__(self, settings):
+        """Initialize sudoku board"""
         self.rows = settings.rows
         self.cols = settings.cols
         self.width = settings.window_width
@@ -21,3 +22,7 @@ class Board:
         self.cubes = [[Cube(self.board[i][j], i, j, self.width, self.height) for j in range(self.cols)] for i in range(self.rows)]
         self.model = None
         self.selected = None
+
+    def update_model(self):
+        """Update model"""
+        self.model = [[self.cubes[i][j].value for j in range(self.cols)] for i in range(self.rows)]
