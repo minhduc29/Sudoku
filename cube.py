@@ -13,6 +13,7 @@ class Cube:
         self.selected = False
 
     def draw_cube(self, window):
+        """Draw the cube value"""
         font = pygame.font.SysFont("comicsans", 40)
 
         size = self.width / 9
@@ -30,7 +31,9 @@ class Cube:
             pygame.draw.rect(window, (0, 153, 255), (x, y, size, size), 3)
 
     def set_value(self, value):
+        """Set the official value"""
         self.value = value
 
     def set_temporary(self, value):
+        """Set the temporary value"""
         self.temp = value
