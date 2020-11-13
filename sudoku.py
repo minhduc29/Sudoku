@@ -1,5 +1,6 @@
 import pygame
 import sys
+import sounds as s
 from pygame.locals import *
 from time import time, sleep
 from settings import Settings
@@ -65,12 +66,14 @@ class Sudoku:
                         if not self.board.place_num(self.board.cubes[i][j].temp):
                             self.tries += 1
                             if self.tries > 10:
+                                s.lost_sound.play()
                                 self.lost()
                                 sleep(1)
                                 self.board.reset(self.settings)
                                 self.tries = 0
                         self.key = None
                         if self.board.is_completed():
+                            s.won_sound.play()
                             self.won()
                             sleep(1)
                             self.display_time(time)
@@ -127,5 +130,5 @@ class Sudoku:
         pygame.display.update()
 
 if __name__ == '__main__':
-    s = Sudoku()
-    s.run_game()
+    sdk = Sudoku()
+    sdk.run_game()
