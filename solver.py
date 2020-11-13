@@ -43,3 +43,8 @@ def solve(board):
             board[row][col] = 0
 
     return False
+
+def result(board):
+    """Auto solve the board and return the result"""
+    if solve(board):
+        return board

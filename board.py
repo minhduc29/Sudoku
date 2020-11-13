@@ -1,7 +1,8 @@
 import pygame
+from time import sleep
 from puzzles import choose_board, is_valid_sudoku
 from cube import Cube
-from solver import is_valid, solve
+from solver import is_valid, solve, result
 
 class Board:
     """Class to manage the main board of the game"""
@@ -73,6 +74,7 @@ class Board:
         if self.cubes[row][col].value == 0:
             self.cubes[row][col].set_temporary(0)
         else:
+            self.cubes[row][col].set_temporary(0)
             self.cubes[row][col].set_value(0)
 
     def click(self, pos):
@@ -93,3 +95,20 @@ class Board:
                     return False
 
         return True
+
+    def solve(self):
+        """Auto solve the model"""
+        self.update_model()
+        self.model = result(self.model)
+        self.cubes = [[Cube(self.model[i][j], i, j, self.width, self.height) for j in range(self.cols)] for i in range(self.rows)]
+
+    def reset(self, settings):
+        """Reset the game"""
+        self.rows = settings.rows
+        self.cols = settings.cols
+        self.width = settings.window_width
+        self.height = settings.window_width
+        self.board = choose_board()
+        self.cubes = [[Cube(self.board[i][j], i, j, self.width, self.height) for j in range(self.cols)] for i in range(self.rows)]
+        self.model = None
+        self.selected = None
