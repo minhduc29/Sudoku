@@ -1,5 +1,5 @@
 # Sudoku
-#### _Project #7_
+#### _Project #6_
 - A classic game about solving a 9x9 and partially filled board using **_Pygame_**
 
 ## How to play
